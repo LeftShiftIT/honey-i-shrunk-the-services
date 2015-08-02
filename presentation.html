@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Microservices</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style>
+
+
+
+    /* latin */
+    @font-face {
+      font-family: 'Droid Serif';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Droid Serif'), local('DroidSerif'), url(https://fonts.gstatic.com/s/droidserif/v6/0AKsP294HTD-nvJgucYTaI4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Yanone Kaffeesatz';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(https://fonts.gstatic.com/s/yanonekaffeesatz/v7/YDAoLskQQ5MOAgvHUQCcLV83L2yn_om9bG0a6EHWBso.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Yanone Kaffeesatz';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Yanone Kaffeesatz Regular'), local('YanoneKaffeesatz-Regular'), url(https://fonts.gstatic.com/s/yanonekaffeesatz/v7/YDAoLskQQ5MOAgvHUQCcLfGwxTS8d1Q9KiDNCMKLFUM.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkTTOQ_MqJVwkKsUn0wKzc2I.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkTUj_cnvWIuuBMVgbX098Mw.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* greek-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkUbcKLIaa1LC45dFaAfauRA.woff2) format('woff2');
+      unicode-range: U+1F00-1FFF;
+    }
+    /* greek */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkWo_sUJ8uO4YLWRInS22T3Y.woff2) format('woff2');
+      unicode-range: U+0370-03FF;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkSYE0-AqJ3nfInTTiDXDjU4.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Ubuntu Mono'), local('UbuntuMono-Regular'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ViZhet7Ak-LRXZMXzuAfkY4P5ICox8Kq3LLUNMylGO4.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molytp6iIh_FvlUHQwED9Yt5Kbw.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molyti_vZmeiCMnoWNN9rHBYaTc.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* greek-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molytiFaMxiho_5XQnyRZzQsrZs.woff2) format('woff2');
+      unicode-range: U+1F00-1FFF;
+    }
+    /* greek */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molytgalQocB-__pDVGhF3uS2Ks.woff2) format('woff2');
+      unicode-range: U+0370-03FF;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molytujkDdvhIIFj_YMdgqpnSB0.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: normal;
+      font-weight: 700;
+      src: local('Ubuntu Mono Bold'), local('UbuntuMono-Bold'), url(https://fonts.gstatic.com/s/ubuntumono/v6/ceqTZGKHipo8pJj4molytolIZu-HDpmDIZMigmsroc4.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+    /* cyrillic-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKAxNcqx07xvyppV96iFRdwiM.woff2) format('woff2');
+      unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+    }
+    /* cyrillic */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA-fhZE2STYI3KzBGzrJG_ik.woff2) format('woff2');
+      unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+    }
+    /* greek-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA26cj8HaeL2jS4NIBPr3RFo.woff2) format('woff2');
+      unicode-range: U+1F00-1FFF;
+    }
+    /* greek */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA9cKKn5Xt5n-nnvkqIBMZms.woff2) format('woff2');
+      unicode-range: U+0370-03FF;
+    }
+    /* latin-ext */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA0_0lycXMw8PhobHtu2Qgco.woff2) format('woff2');
+      unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+    }
+    /* latin */
+    @font-face {
+      font-family: 'Ubuntu Mono';
+      font-style: italic;
+      font-weight: 400;
+      src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA8u2Q0OS-KeTAWjgkS85mDg.woff2) format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+    }
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      .remark-slide-content h1 { font-size: 3em; }
+      .remark-slide-content h2 { font-size: 2em; }
+      .remark-slide-content h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(0, 0, 255);
+        text-decoration: none;
+      }
+      code {
+        background: #e7e8e2;
+        border-radius: 5px;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code-line-highlighted     { background-color: #373832; }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .jobs {
+        float: left;
+        margin-right: 25px;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      .slides h3 {
+        margin-top: 0.2em;
+      }
+      .slides {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      .slides {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+
+    .center {
+        margin: auto;
+        padding: 10px;
+    }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 70%;
+        float: right;
+        padding-top: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+        layout: true
+        class: center, middle
+
+        ---
+        <br />
+        <br />
+        ![Monolith1](images/leftshift-logo.png)
+        <br />
+        <br />
+        <br />
+        <!-- #### Trusted experts and global leaders in the successful delivery of large and complex technology change programmes. -->
+        ![Monolith1](images/ibm-logo.png)
+        <br />
+        <br />
+        <!--#### Recognised best-in-class Testing and Virtualization solutions by Gartner & Forrester. Industry-leading continuous delivery tooling.-->
+        ![Monolith1](images/arrow-logo.jpg)
+        <br />
+
+        <!--#### Solving business problems with a comprehensive portfolio of IT solutions from the world's foremost technology suppliers.-->
+        ### present...
+
+        ---
+
+        class: inverse
+        background-image: url(images/shrink.jpg)
+
+        # Honey, I Shrunk the Services!
+        ### Microservices, DevOps & Testing
+
+        ---
+
+        layout: false
+
+        ## Agenda
+
+        - Introduction
+
+        - Evolving Software Architectures
+
+        - Continuous Delivery and the Quest for Speed
+
+        - Organizational Change
+
+        - The Importance of Testing
+
+        - Success Stories
+
+        - Common Misconceptions
+
+        - Lessons Learned
+
+        - Questions
+
+        <br />
+
+        #### *Yeah it's a lot...I'm probably going to speak fast*
+
+        ---
+
+        ## John Harris
+
+        ### Technical Solutions Architect
+
+        - #### Continuous Delivery
+
+        - #### Continuous Testing
+
+        - #### Development
+
+        - #### DevOps
+
+        - #### Training
+
+        - #### Evangelism (organizational change & doing things right)
+
+        <br />
+        <i class="fa fa-twitter-square fa-lg"></i>&nbsp;&nbsp;[johnharris85](https://twitter.com/johnharris85)
+        <br />
+        <br />
+        <i class="fa fa-envelope-square fa-lg"></i>&nbsp;&nbsp;[jharris@leftshiftit.com](mailto:jharris@leftshiftit.com)
+
+        ---
+
+        ## The Dark Ages
+
+        Monolithic Applications:
+
+        - Long build times
+
+        - Difficult to scale
+
+        - Everything must be deployed together
+
+        - Tightly coupled functions
+
+        - One underlying database
+
+        - Innovation speed is heavily impacted
+
+        - Any failure becomes an impediment to build & deployment
+
+        ---
+
+        ## Monolithic Applications
+
+        ![Monolith](images/monolith.png)
+
+        ---
+
+        ## Scaling the Monolith
+
+        .pull-left[![Monolith1](images/monolith.png)]
+
+        .pull-left[![Monolith2](images/monolith.png)]
+
+        ---
+
+        ## Enterprise Architecture, Take 2
+
+        Service Oriented Architecture:
+
+        - Seperate functionality into services
+
+        - SOAP / XML heavyweight, slow interface specifications
+
+        - Very standards-dense (WS-*)
+
+        - Tend to be coarse-grained, encapsulating large swathes of functionality
+
+        - Still single / few databases backing the entire system
+
+        ---
+
+        ## SOA ESB
+
+        ![SOA](images/esb-initial.png)
+
+        ---
+
+        ## ESB Monolith
+
+        ![SOA](images/esb-final.png)
+
+        ---
+
+        ## SOA ESB
+
+        Enterprise Service Bus:
+
+        - Violates 'Smart endpoints, dumb pipes'
+
+        - Reduces services to 'CRUD' machines
+
+        - ESB becomes a new monolith
+
+        - Still difficult to scale
+
+        - Persistence can start to creep in
+
+        - 'Orchestration' model (prefer the 'Choreography' model)
+
+        - A common driver is the want to create a 'canonical' data model (prefer 'Bounded Contexts')
+
+        ### "ESB == Egregious Spaghetti Box."
+        -- Jim Webber (Head of Architecture, ThoughtWorks)
+
+        ---
+
+        ## Where are we going?
+
+        Microservices:
+
+          - Well-defined, simple interfaces
+
+          - Modular design
+
+          - Single-purpose
+
+          - Isolated persistence / databases
+
+          - Very scalable (horizontally)
+
+          - Take advantage of polyglot programming / applications (right tool for the right job)
+
+          - Service discovery
+
+          - Reduce cognitive load
+
+          - Isolating / limiting the effects of failure
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## "Microservices are the first post DevOps revolution architecture"
+        -- Neal Ford (ThoughtWorks)
+
+        ---
+
+        layout: false
+
+        ## Microservices
+
+        ![SOA](images/microservices.png)
+
+        ---
+
+        ## Scaling Microservices
+
+        ![SOA](images/microservices-scaling.png)
+
+        ---
+
+        ## Additional Complexities
+
+        - Microservices aren't a silver bullet
+
+        - They aren't for everyone, should be in response to specific needs
+
+        - Distributed systems are hard
+
+        - Embrace eventual consistency (CAP)
+
+        - Premature optimization is the root of all evil, don't mess up your service boundaries!
+
+        - Networks are unreliable
+
+        - Increase cognitive load
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        class: inverse
+
+        # Continuous Delivery
+
+        ---
+
+        ## "Software is eating the world"
+        -- Marc Andreessen (Tech Angel Investor)
+
+        ---
+
+        layout: false
+
+        ## Every Company is an IT Company
+
+        .center[![Software](images/state-of-software.jpg)]
+
+        ---
+
+        ## Continuous Delivery (DevOps)
+
+        - Delivering features (change) to the business
+
+        - Pipelines
+
+        - Automation
+
+        - Feedback
+
+        - Collaboration
+
+        ---
+
+        ## Continuous Delivery (DevOps)
+
+        - Delivering features (change) to the business
+
+        - Pipelines
+
+        - Automation
+
+        - Feedback
+
+        - Collaboration
+
+        .pull-right[
+            *...beep beep...*
+            ![Software](images/roadrunner.jpg)
+            ]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## Microservices' size and natural design patterns enable smaller batch size, reduced risk and increased ability to add / modify functionality at rapid speed.
+
+        ---
+
+        layout: false
+
+        ## Culture
+
+        .center[![Software](images/devops.jpg)]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## "Bad behavior arises when you abstract people away from the consequences of their actions."
+
+        ---
+
+        layout: false
+
+        ## Conway's Law
+
+        ..."organizations which design systems … are constrained to produce designs which are copies of the communication structures of these organizations."
+
+        .center[![Software](images/conways-law.png)]
+
+        .pull-right[*[image from Microservices by Martin Fowler]*]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## "DevOps is an Re-org"
+        -- Adrian Cockcroft (Chief Architect, Netflix)
+
+        ---
+
+        layout: false
+
+        ## Cross-Functional Teams
+
+        .center[![Software](images/cross-functional.png)]
+
+        .pull-right[*[image from Microservices by Martin Fowler]*]
+
+        ---
+
+        ## Enabling Cross-Functional Teams
+
+        - Foster a high-trust, no blame culture (and implement pre & post mortems)
+
+        - Communication is naturally fraught, humans have a limited number of connections they can process at any one time
+
+        - Amazon developed the idea of a 'Two-Pizza Team'
+
+        - Teams should be free to recognise problems and innovate to solve them
+
+        - Rapid prototyping and fast feedback
+
+        - Transparency, access, sharing
+
+        - At Etsy, new developers deploy into production on their first day. "If they can break something serious that easily, we and our processes are at fault."
+
+        .jobs[![Software](images/jobs.jpg)]
+
+        ### "It doesn't make sense to hire smart people and tell them what to do; we hire smart people so they can tell us what to do."
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        class: inverse
+
+        # Testing
+
+        ---
+
+        layout: false
+
+        ## Continuous Testing
+
+        .center[![Software](images/roadrunner-coyote.jpg)]
+
+        ---
+
+        .left-column[
+        ## Testing is Important
+        ### Microsoft Word
+        ]
+        .right-column[
+
+        ```c
+        /* function calculating line height */
+        int height(int num1, int num2)
+        {
+           return 12;
+        }
+        ```
+
+        - The Microsoft Word team were so stressed and behind (around 2 years) that it was easier to knowingly deliver bugs and fix them later than to code and test their implementation to begin with.
+
+        - Upon final delivery of the first version, the entire product team were sent on a month-long vacation to Hawaii while management figured out what went wrong.
+
+        - Microsoft used this experience to develop their 'zero defects policy'
+        ]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ### "...each team member is individually responsible for helping achieve the desired level of quality."
+        ### "The zero-defect mindset does not mean that the deployed solution must be 'perfect' with literally no defects; rather, it establishes perfection as a consistent goal for the team to strive for."
+
+        ---
+
+        layout: false
+
+        .left-column[
+        ## Testing is Important
+        ### Microsoft Word
+        ### Knight Capital
+        ]
+        .right-column[
+
+        .center[![Software](images/knight.jpg)]
+
+        - Upgraded their trading software to compete with a rival who had just upgraded
+
+        - Legacy code & configuration was deployed to production, causing erratic trades
+
+        - Lost $440m in just over 30 minutes
+
+        ]
+
+        ---
+
+        .left-column[
+        ## Testing is Important
+        ### Microsoft Word
+        ### Knight Capital
+        ### AT & T
+        ]
+        .right-column[
+
+        .center[![Software](images/phone.jpg)]
+
+        - Upgraded their long-distance routing software with new 'faster' functionality
+
+        - Software was never testing in a production setting and was 'too fast'
+
+        - Routers kept rebooting and no calls went through
+
+        - AT & T lost over $60m on the initial fault and millions more on compensatory PR activities
+
+        ]
+
+        ---
+
+        .left-column[
+        ## Testing is Important
+        ### Microsoft Word
+        ### Knight Capital
+        ### AT & T
+        ### Bank of Queensland
+        ]
+        .right-column[
+
+        .center[![Software](images/atm.jpg)]
+
+        - On New Year's day in 2010 all of their internal clocks rolled forward 6 years
+
+        - As no cards were currently valid to 2016, all customer cards were rejected by nearly every one of BoQ's 8,000 internal EFTPOS systems
+
+        - The 'fix' involved operators manually keying every customer transaction
+
+        ]
+
+        ---
+
+        ## The Cost of Finding & Fixing Defects
+
+        <br />
+
+        .center[![Software](images/defect-stage-cost.png)]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## "The biggest single-change you can make to reduce defects is to embed testing resources in the development team.""
+
+        ---
+
+        layout: false
+
+        ## Testing
+
+        - Most testing is done through the UI
+
+        - UI testing is slow (even when automated)
+
+        - UI testing is bad for figuring out what went wrong
+
+        - Feedback loops decrease, ability to innovate suffers
+
+        - In many cases the API is **becoming** the product (we have no UI to test)
+
+        .center[![Software](images/test-pyramid.png)]
+
+        ---
+
+        ![Software](images/ibm-logo-purple.png)
+        ### Rational Integration Tester
+
+        - TDD for our (micro) services
+
+        - Excellent support for HTTP (SOAP / REST) & queue-based interfaces
+
+        - Seamless integration with Continous Integration
+
+        - User-friendly (code-free), anyone can build tests
+
+        - Dial-up or down as much validation as you need, including DB checks, log watching, etc...
+
+        - Mature concept of environments - 'write once, run anywhere' philosophy (enabling testing across developer machines, internal environments and external cloud services)
+
+        ---
+
+        ## Dealing with increased Dependencies
+
+        - Testing and development of microservices can be more challenging because of the increasing number of dependencies services may have
+
+        - This has the potential to be a blocker when services are available at different times
+
+        - Because we are standardising the interfaces across our services, we should be able to 'mock' these dependencies to enable us to go faster
+
+        - This is currently done (if at all) at development level, but creates unnecessary noise in our code base
+
+        - It also takes developers away from doing development, slowing our rate of innovation and ability to delivery customer value
+
+        ---
+
+        ## ![Software](images/ibm-logo-purple.png)
+        ### Rational Test Virtualization Server
+
+        - 'Mock' dependencies at multiple layers (code / services / DB) called 'Virtual Services'
+
+        - Support for over 100+ protocols and message formats
+
+        - Seamless integration with CI & deployment tools via REST interface
+
+        - User-friendly (code-free), anyone can build virtual services
+
+        - Create wide variety of system-like responses (including error conditions) to enable full development testing
+
+        - Isolated environments for each developer to control inputs and responses - no waiting on other services / teams / vendors
+
+        - Enables earlier identification of defects and reduces defects found at the painful integration stage
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        class: inverse
+
+        ## Case Studies
+
+        ---
+
+        layout: false
+
+        .center[![Software](images/bank.jpg)]
+
+        - Setup automated testing and virtualization of REST services for over 150 APIs (integrated with Jenkins & Github)
+
+        - Used virtual services to remove developer-coded stubs
+
+        - Identified over 80+ defects a month before integration was due to begin
+
+        - **All were fixed before the integration phase, giving 2-3 weeks of real time savings back to the lifecycle**
+
+        - This was used for additional integration testing and **earlier component availability**
+
+        - Entire process on the way to being fully automated, these successes were just with a single team
+
+        - The capability is still in use today and has been expanded to multiple teams, enabling **on-time delivery of time-critical programmes** like Apple Pay and Android Pay integrations
+
+        ---
+
+        .center[![Software](images/ebay-enterprise.png)]
+
+        - Implementing a new REST services API on top of current architecture for both internal UI and external customers to consume
+
+        - Built end-to-end regression suites with multiple validation points inside a complex architecture
+
+        - Completely ripped out existing UI-focused test strategy and replaced with automated message-based testing (with IBM tooling)
+
+        - **End-to-end regression test time reduced from 3 hours (with some manual processes) to less than 3 minutes (completely automated)**
+
+        - The IBM tooling was so efficient for purpose that eBay decided to use it as a test orchestration engine to **speed up** running of
+        their existing UI suites (that had been rewritten in Selenium)
+
+        - **Increased speed** of testing capability enabled **earlier time to market** for onboarding of new partners and web stores
+
+        ---
+
+        .center[![Software](images/anthem.jpg)]
+
+        - Used IBM tooling to completely revamp interface testing at multiple layers of architecture
+
+        - Automated testing and virtualization framework created to enable **earlier development & migration of a highly-visible, critical** mobile application
+
+        - Advised on development of a Microservices approach and used automated testing and virtualization to enable PoC'ing of API gateway vendors **before key front and back end dependencies were
+        available**
+
+        - Built end-to-end regression suites with multiple validation points inside a complex architecture
+
+        - Multiple phases of rollout have resulted in many teams now leveraging these advanced capabilities to **reduce the time spent in testing phases** and **deliver quality to the business quicker than ever** in a very competitive (healthcare) market
+
+        ---
+
+        layout: false
+
+        .left-column[
+        ## Common Misconceptions
+        ### No Time
+        ]
+        .right-column[
+
+        .center[![Software](images/improve.png)]
+
+        - The capabilities and architectural changes described in this presentation are 'evolutionary' (YAGNI & KISS)
+
+        - Several years ago Amazon's new CTO stopped all innovation for 3 months to fix their current processes.
+
+        - eBay's move to microservices involved reverse-sorting the pages on their site by revenue generated. They then worked through the list incrementally improving the entire system.
+
+        ]
+
+        ---
+
+        .left-column[
+        ## Common Misconceptions
+        ### No Time
+        ### Won't Work Here
+        ]
+        .right-column[
+
+        .center[![Software](images/netflix.png)]
+
+        - 'I know it worked for X company, but we are much bigger / do more transactions / have more services'.
+
+        - Netflix are one of the pioneers of Continuous Delivery and microservices. At it's peak, Netflix traffic accounts for over 1/3 of all US internet activity. 800 types of devices make over a billion calls per day to the Netflix API.
+
+        - 'Regulatory compliance means we can't do any of this smart stuff'
+
+        - AWS is HIPAA compliant and has several major health companies storing sensitive data in the cloud.
+
+        ]
+
+        ---
+
+        .left-column[
+        ## Common Misconceptions
+        ### No Time
+        ### Won't Work Here
+        ### Tools, Tools, Tools
+        ]
+        .right-column[
+
+        .center[![Software](images/all-tools.jpg)]
+
+        - A common misconception is that we can buy all the 'in' tools and then be 'doing' microservices / continuous delivery / devops...
+
+        - Tools are incredibly valuable
+
+        - Just as CI can be done with a rubber chicken, and Kanban with a wall of post-it notes, Continous Delivery can be done with simple organization and processes changes to begin with.
+
+        ]
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        class: inverse
+
+        ## Lessons Learned (or key takeaways...)
+
+        ---
+
+        layout: false
+
+        ## Testing is more important than ever...
+
+        .center[![Software](images/just-eat.png)]
+
+        *Mmmm **automated**, tasty...*
+
+        ---
+
+        ## ...so make Test a First-Class Citizen
+
+        - Test should be involved early in the requirements phase and all through development
+
+        - A product can be extremely valuable / complex yet completely fail because it is untestable
+
+        - Creating cross-functional teams facilitates this involvement and helps to give **everyone** responsibility for product quality
+
+        - 'You build it, you run it'
+
+        - No more siloes
+
+        - Build quality into the lifecycle
+
+        - By not encouraging Dev / QA collaboration companies are choosing to unnecessarily increase the cost of fixing defects
+
+        ---
+
+        ## Failures
+
+        - Eliminate 'fear' cultures
+
+        - Encourage collective responsibility
+
+        - Incentivise everyone towards the same goal
+
+        - Failure should be **embraced**, **expected**, and **tested**
+
+        .center[![Software](images/simian-army.jpg)]
+
+        - Fail fast, recover quickly (MTTR, self healing, etc...)
+
+        - New CTO of Wunderlist tried to break something everytime he came into the office
+
+        - Build resiliency into your applications
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## Organizational changes are required to realise the full benefits of Continous Delivery, DevOps & Microservices
+
+        ---
+
+        layout: false
+
+        ## Best Practises Become Encouraged
+
+        - Modular service design aids testability
+
+        - etc
+
+        ---
+
+        layout: true
+        class: center, middle
+
+        ---
+
+        ## "How long would it take your organization to deploy a change that involves just one single line of code?"
+
+        ---
+
+        name: last-page
+        template: inverse
+
+        # Questions?
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        ![Software](images/leftshift-logo.png)
+        <br />
+        leftshiftit.com
+        <br />
+        @leftshiftit
+    </textarea>
+    <script src="js/remark-latest.min.js"></script>
+    <script>
+      var hljs = remark.highlighter.engine;
+    </script>
+    <script src="remark.language.js"></script>
+    <script>
+      var slideshow = remark.create({
+          highlightStyle: 'monokai',
+          highlightLanguage: 'remark'
+        }) ;
+    </script>
+
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
