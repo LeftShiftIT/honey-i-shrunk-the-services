@@ -5,9 +5,6 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <style>
-
-
-
     /* latin */
     @font-face {
       font-family: 'Droid Serif';
@@ -295,6 +292,7 @@
         class: center, middle
 
         ---
+
         <br />
         <br />
         ![Monolith1](images/leftshift-logo.png)
@@ -832,8 +830,18 @@
 
         ## Consumer-Driven Contracts
 
-        TBC
-        Testing section in microservices book by Sam Newman
+        - Consuming systems typically won't always use the full content of an API / microservice response
+
+        *Response from user service*
+        ```json
+        {
+          "jharris": {
+            "id": 5092, # Used by authorisation service
+            "username": "jharris@leftshiftit.com", # Used by authorisation service
+            "favourite_colour": "blue" } # Used by personalisation service
+        }
+        ```
+        - 
 
         ---
 
