@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Microservices</title>
+    <title>Microservices, DevOps & Testing</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <style>
@@ -173,7 +173,6 @@
       src: local('Ubuntu Mono Italic'), local('UbuntuMono-Italic'), url(https://fonts.gstatic.com/s/ubuntumono/v6/KAKuHXAHZOeECOWAHsRKA8u2Q0OS-KeTAWjgkS85mDg.woff2) format('woff2');
       unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
     }
-
       body {
         font-family: 'Droid Serif';
       }
@@ -264,10 +263,10 @@
         z-index: 1;
       }
 
-    .center {
+      .center {
         margin: auto;
         padding: 10px;
-    }
+      }
 
       /* Two-column layout */
       .left-column {
@@ -293,11 +292,7 @@
 
         ---
 
-        <br />
-        <br />
         ![Monolith1](images/leftshift-logo.png)
-        <br />
-        <br />
         <br />
         <!-- #### Trusted experts and global leaders in the successful delivery of large and complex technology change programmes. -->
         ![Monolith1](images/ibm-logo.png)
@@ -305,8 +300,6 @@
         <br />
         <!--#### Recognised best-in-class Testing and Virtualization solutions by Gartner & Forrester. Industry-leading continuous delivery tooling.-->
         ![Monolith1](images/arrow-logo.jpg)
-        <br />
-
         <!--#### Solving business problems with a comprehensive portfolio of IT solutions from the world's foremost technology suppliers.-->
         ### present...
 
@@ -324,23 +317,19 @@
 
         ## Agenda
 
-        - Introduction
+        - Evolving Software Architectures [6 mins]
 
-        - Evolving Software Architectures
+        - Continuous Delivery and the Quest for Speed [4m]
 
-        - Continuous Delivery and the Quest for Speed
+        - Organizational Change [6m]
 
-        - Organizational Change
+        - The Importance of Testing [8m]
 
-        - The Importance of Testing
+        - Success Stories [7m]
 
-        - Success Stories
+        - Lessons Learned [7m]
 
-        - Common Misconceptions
-
-        - Lessons Learned
-
-        - Questions
+        - Questions [7m]
 
         <br />
 
@@ -382,13 +371,11 @@
 
         - Everything must be deployed together
 
-        - Tightly coupled functions
-
         - One underlying database
 
-        - Innovation speed is heavily impacted
-
         - Any failure becomes an impediment to build & deployment
+
+        - Innovation speed is heavily impacted
 
         ---
 
@@ -438,7 +425,7 @@
 
         Enterprise Service Bus:
 
-        - Violates 'Smart endpoints, dumb pipes'
+        - 'Smart endpoints, dumb pipes'
 
         - Reduces services to 'CRUD' machines
 
@@ -446,14 +433,9 @@
 
         - Still difficult to scale
 
-        - Persistence can start to creep in
+        - Orchestration vs Choreography
 
-        - 'Orchestration' model (prefer the 'Choreography' model)
-
-        - A common driver is the want to create a 'canonical' data model (prefer 'Bounded Contexts')
-
-        ### "ESB == Egregious Spaghetti Box."
-        -- Jim Webber (Head of Architecture, ThoughtWorks)
+        - Bounded Contexts
 
         ---
 
@@ -465,7 +447,7 @@
 
           - Modular design
 
-          - Single-purpose
+          - Single-purpose (Single Responsibility Principle)
 
           - Isolated persistence / databases
 
@@ -559,33 +541,16 @@
 
         - Collaboration
 
-        ---
+        - Speed of iteration
 
-        ## Continuous Delivery (DevOps)
+        - Optimize for iteration / cycle speed
 
-        - Delivering features (change) to the business
-
-        - Pipelines
-
-        - Automation
-
-        - Feedback
-
-        - Collaboration
-
-        .pull-right[
-            *...beep beep...*
-            ![Software](images/roadrunner.jpg)
-            ]
+        - TBC etc...
 
         ---
 
         layout: true
         class: center, middle
-
-        ---
-
-        ## Microservices' size and natural design patterns enable smaller batch size, reduced risk and increased ability to add / modify functionality at rapid speed.
 
         ---
 
@@ -667,102 +632,21 @@
 
         class: inverse
 
-        # Testing
+        # (Continuous) Testing
 
         ---
 
-        layout: false
-
-        ## Continuous Testing
-
-        .center[![Software](images/roadrunner-coyote.jpg)]
-
-        ---
-
-        .left-column[
-        ## Testing is Important
-        ### Microsoft Word
-        ]
-        .right-column[
-
-        ```c
-        /* function calculating line height */
-        int height(int num1, int num2)
-        {
-           return 12;
-        }
-        ```
-
-        - The Microsoft Word team were so stressed and behind (around 2 years) that it was easier to knowingly deliver bugs and fix them later than to code and test their implementation to begin with.
-
-        - Upon final delivery of the first version, the entire product team were sent on a month-long vacation to Hawaii while management figured out what went wrong.
-
-        - Microsoft used this experience to develop their 'zero defects policy'
-        ]
+        ## Testing is Important...
+        <br />
+        <br />
+        <br />
+        ## ...sometimes it goes a bit wrong.
 
         ---
-
-        layout: true
-        class: center, middle
-
-        ---
-
-        ### "...each team member is individually responsible for helping achieve the desired level of quality."
-        ### "The zero-defect mindset does not mean that the deployed solution must be 'perfect' with literally no defects; rather, it establishes perfection as a consistent goal for the team to strive for."
-
-        ---
-
-        layout: false
-
-        .left-column[
-        ## Testing is Important
-        ### Microsoft Word
-        ### Knight Capital
-        ]
-        .right-column[
 
         .center[![Software](images/knight.jpg)]
 
-        - Upgraded their trading software to compete with a rival who had just upgraded
-
-        - Legacy code & configuration was deployed to production, causing erratic trades
-
-        - Lost $440m in just over 30 minutes
-
-        ]
-
         ---
-
-        .left-column[
-        ## Testing is Important
-        ### Microsoft Word
-        ### Knight Capital
-        ### AT & T
-        ]
-        .right-column[
-
-        .center[![Software](images/phone.jpg)]
-
-        - Upgraded their long-distance routing software with new 'faster' functionality
-
-        - Software was never testing in a production setting and was 'too fast'
-
-        - Routers kept rebooting and no calls went through
-
-        - AT & T lost over $60m on the initial fault and millions more on compensatory PR activities
-
-        ]
-
-        ---
-
-        .left-column[
-        ## Testing is Important
-        ### Microsoft Word
-        ### Knight Capital
-        ### AT & T
-        ### Bank of Queensland
-        ]
-        .right-column[
 
         .center[![Software](images/atm.jpg)]
 
@@ -771,8 +655,6 @@
         - As no cards were currently valid to 2016, all customer cards were rejected by nearly every one of BoQ's 8,000 internal EFTPOS systems
 
         - The 'fix' involved operators manually keying every customer transaction
-
-        ]
 
         ---
 
@@ -811,7 +693,7 @@
 
         ---
 
-        ![Software](images/ibm-logo-purple.png)
+        ![Software](images/ibm-devops.png)
         ### Rational Integration Tester
 
         - TDD for our (micro) services
@@ -832,7 +714,7 @@
 
         - Consuming systems typically won't always use the full content of an API / microservice response
 
-        *Response from user service*
+        *[Response from user service]*
         ```json
         {
           "jharris": {
@@ -841,7 +723,7 @@
             "favourite_colour": "blue" } # Used by personalisation service
         }
         ```
-        - 
+        -
 
         ---
 
@@ -859,7 +741,7 @@
 
         ---
 
-        ## ![Software](images/ibm-logo-purple.png)
+        ## ![Software](images/ibm-devops.png)
         ### Rational Test Virtualization Server
 
         - 'Mock' dependencies at multiple layers (code / services / DB) called 'Virtual Services'
@@ -891,7 +773,7 @@
 
         layout: false
 
-        .center[![Software](images/bank.jpg)]
+        .center[![Software](images/XXXXX.jpg)] - Leading US Bank and Card Issuer
 
         - Setup automated testing and virtualization of REST services for over 150 APIs (integrated with Jenkins & Github)
 
@@ -909,7 +791,7 @@
 
         ---
 
-        .center[![Software](images/ebay-enterprise.png)]
+        .center[![Software](images/ebay-enterprise.png)] - Leading Global Auction Website
 
         - Implementing a new REST services API on top of current architecture for both internal UI and external customers to consume
 
@@ -923,21 +805,6 @@
         their existing UI suites (that had been rewritten in Selenium)
 
         - **Increased speed** of testing capability enabled **earlier time to market** for onboarding of new partners and web stores
-
-        ---
-
-        .center[![Software](images/anthem.jpg)]
-
-        - Used IBM tooling to completely revamp interface testing at multiple layers of architecture
-
-        - Automated testing and virtualization framework created to enable **earlier development & migration of a highly-visible, critical** mobile application
-
-        - Advised on development of a Microservices approach and used automated testing and virtualization to enable PoC'ing of API gateway vendors **before key front and back end dependencies were
-        available**
-
-        - Built end-to-end regression suites with multiple validation points inside a complex architecture
-
-        - Multiple phases of rollout have resulted in many teams now leveraging these advanced capabilities to **reduce the time spent in testing phases** and **deliver quality to the business quicker than ever** in a very competitive (healthcare) market
 
         ---
 
@@ -982,26 +849,6 @@
 
         ---
 
-        .left-column[
-        ## Common Misconceptions
-        ### No Time
-        ### Won't Work Here
-        ### Tools, Tools, Tools
-        ]
-        .right-column[
-
-        .center[![Software](images/all-tools.jpg)]
-
-        - A common misconception is that we can buy all the 'in' tools and then be 'doing' microservices / continuous delivery / devops...
-
-        - Tools are incredibly valuable
-
-        - Just as CI can be done with a rubber chicken, and Kanban with a wall of post-it notes, Continous Delivery can be done with simple organization and processes changes to begin with.
-
-        ]
-
-        ---
-
         layout: true
         class: center, middle
 
@@ -1009,17 +856,7 @@
 
         class: inverse
 
-        ## Lessons Learned (or key takeaways...)
-
-        ---
-
-        layout: false
-
-        ## Testing is more important than ever...
-
-        .center[![Software](images/just-eat.png)]
-
-        *Mmmm **automated**, tasty...*
+        ## Lessons Learned
 
         ---
 
@@ -1080,26 +917,16 @@
 
         ---
 
-        layout: true
-        class: center, middle
-
-        ---
-
-        ## "How long would it take your organization to deploy a change that involves just one single line of code?"
-
-        ---
-
         name: last-page
         template: inverse
 
-        # Questions?
+        # "How long would it take your organization to deploy a change that involves just one single line of code?"
         <br />
         <br />
         <br />
         <br />
         <br />
-        <br />
-        <br />
+        ## Questions?
         <br />
         <br />
         ![Software](images/leftshift-logo.png)
@@ -1118,8 +945,6 @@
           highlightStyle: 'monokai',
           highlightLanguage: 'remark'
         }) ;
-    </script>
-
     </script>
     <script>
       var slideshow = remark.create();
