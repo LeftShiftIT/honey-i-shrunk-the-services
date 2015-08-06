@@ -351,8 +351,6 @@
 
         - #### Training
 
-        - #### Evangelism (organizational change & doing things right)
-
         <br />
         <i class="fa fa-twitter-square fa-lg"></i>&nbsp;&nbsp;[johnharris85](https://twitter.com/johnharris85)
         <br />
@@ -425,7 +423,7 @@
 
         Enterprise Service Bus:
 
-        - 'Smart endpoints, dumb pipes'
+        - 'Smart pipes, dumb endpoints'
 
         - Reduces services to 'CRUD' machines
 
@@ -435,7 +433,7 @@
 
         - Orchestration vs Choreography
 
-        - Bounded Contexts
+        - Complex to test
 
         ---
 
@@ -443,11 +441,13 @@
 
         Microservices:
 
+          - 'Smart endpoints, dumb pipes' (Unix design principles)
+
           - Well-defined, simple interfaces
 
           - Modular design
 
-          - Single-purpose (Single Responsibility Principle)
+          - Single-purpose (Single Responsibility Principle, do one thing well)
 
           - Isolated persistence / databases
 
@@ -455,25 +455,11 @@
 
           - Take advantage of polyglot programming / applications (right tool for the right job)
 
-          - Service discovery
-
-          - Reduce cognitive load
-
           - Isolating / limiting the effects of failure
 
-        ---
-
-        layout: true
-        class: center, middle
+          - Enable greater testability and mocking
 
         ---
-
-        ## "Microservices are the first post DevOps revolution architecture"
-        -- Neal Ford (ThoughtWorks)
-
-        ---
-
-        layout: false
 
         ## Microservices
 
@@ -493,15 +479,21 @@
 
         - They aren't for everyone, should be in response to specific needs
 
-        - Distributed systems are hard
+        - Networks are unreliable
 
-        - Embrace eventual consistency (CAP)
+        - Failure is frequent
+
+        - Consistency, Availabiliy, Partition Tolerance (CAP)
+
+        - Idempotent transactions
 
         - Premature optimization is the root of all evil, don't mess up your service boundaries!
 
-        - Networks are unreliable
+        - Design a monolith first?
 
-        - Increase cognitive load
+        - Take an evolutionary approach
+
+        - Some industries problems present natural seams
 
         ---
 
@@ -529,9 +521,7 @@
 
         ---
 
-        ## Continuous Delivery (DevOps)
-
-        - Delivering features (change) to the business
+        ## Continuous Delivery
 
         - Pipelines
 
@@ -545,7 +535,9 @@
 
         - Optimize for iteration / cycle speed
 
-        - TBC etc...
+        - Decoupling of deployment and release
+
+        #### The core (only) function of IT is to deliver rapid value (features / changes / fixes) to the business
 
         ---
 
@@ -607,15 +599,13 @@
 
         - Foster a high-trust, no blame culture (and implement pre & post mortems)
 
-        - Communication is naturally fraught, humans have a limited number of connections they can process at any one time
+        - Amazon developed the idea of a 'Two-Pizza Team' (less communication over more)
 
-        - Amazon developed the idea of a 'Two-Pizza Team'
-
-        - Teams should be free to recognise problems and innovate to solve them
+        - Teams should be free to recognise problems and innovate to solve them (transparency & access)
 
         - Rapid prototyping and fast feedback
 
-        - Transparency, access, sharing
+        - "...each team member is individually responsible for helping achieve the desired level of quality." ('You build it, you run it')
 
         - At Etsy, new developers deploy into production on their first day. "If they can break something serious that easily, we and our processes are at fault."
 
@@ -636,17 +626,21 @@
 
         ---
 
+        layout: false
+
         ## Testing is Important...
-        <br />
-        <br />
-        <br />
-        ## ...sometimes it goes a bit wrong.
 
         ---
+
+        ## Testing is Important...
 
         .center[![Software](images/knight.jpg)]
 
+        ### ...sometimes it goes a bit wrong.
+
         ---
+
+        ## Bank of Queensland
 
         .center[![Software](images/atm.jpg)]
 
@@ -664,14 +658,9 @@
 
         .center[![Software](images/defect-stage-cost.png)]
 
-        ---
-
-        layout: true
-        class: center, middle
-
-        ---
-
         ## "The biggest single-change you can make to reduce defects is to embed testing resources in the development team."
+        <br />
+        ### But obviously, we want to go further than that...
 
         ---
 
@@ -723,7 +712,11 @@
             "favourite_colour": "blue" } # Used by personalisation service
         }
         ```
-        -
+        - Personalisation and Authorisation service teams write automated tests for the User service and hand them over.
+
+        - User service runs all consumer tests to ensure new functionality doesn't break customer interactions
+
+        - Postel's Law
 
         ---
 
@@ -773,7 +766,7 @@
 
         layout: false
 
-        .center[![Software](images/XXXXX.jpg)] - Leading US Bank and Card Issuer
+        ### Leading US Bank and Card Issuer
 
         - Setup automated testing and virtualization of REST services for over 150 APIs (integrated with Jenkins & Github)
 
@@ -785,13 +778,13 @@
 
         - This was used for additional integration testing and **earlier component availability**
 
-        - Entire process on the way to being fully automated, these successes were just with a single team
-
         - The capability is still in use today and has been expanded to multiple teams, enabling **on-time delivery of time-critical programmes** like Apple Pay and Android Pay integrations
+
+        - BUAT run against virtual services to provide early feedback to the business. Previous release slipped ~3m when business rejected it due to requirements not being implemented.
 
         ---
 
-        .center[![Software](images/ebay-enterprise.png)] - Leading Global Auction Website
+        ### Leading Global Auction Website
 
         - Implementing a new REST services API on top of current architecture for both internal UI and external customers to consume
 
@@ -860,7 +853,9 @@
 
         ---
 
-        ## ...so make Test a First-Class Citizen
+        layout: false
+
+        ## Make Test a First-Class Citizen
 
         - Test should be involved early in the requirements phase and all through development
 
@@ -868,13 +863,11 @@
 
         - Creating cross-functional teams facilitates this involvement and helps to give **everyone** responsibility for product quality
 
-        - 'You build it, you run it'
-
-        - No more siloes
-
         - Build quality into the lifecycle
 
         - By not encouraging Dev / QA collaboration companies are choosing to unnecessarily increase the cost of fixing defects
+
+        .center[![Software](images/defect-stage-cost.png)]
 
         ---
 
@@ -903,30 +896,14 @@
 
         ---
 
-        ## Organizational changes are required to realise the full benefits of Continous Delivery, DevOps & Microservices
-
-        ---
-
-        layout: false
-
-        ## Best Practises Become Encouraged
-
-        - Modular service design aids testability
-
-        - etc
-
-        ---
-
         name: last-page
         template: inverse
 
-        # "How long would it take your organization to deploy a change that involves just one single line of code?"
+        ## "How long would it take your organization to deploy a change that involves just one single line of code?"
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        ## Questions?
+        ### Questions?
         <br />
         <br />
         ![Software](images/leftshift-logo.png)
